@@ -1,37 +1,66 @@
 package br.com.fetese.projetofetese.entidades;
 
+import jakarta.persistence.*;
+
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 
-public class Atleta extends Usuario{
+@Entity
+public class Atleta extends Usuario implements Serializable {
+
+    private final static Long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long idAtleta;
+
+    @Column(unique=true, nullable=false)
     private Long idKuk;
+    @Column(unique=true, nullable=false)
     private Long idFetese;
+    @Column(nullable=false)
     private String nome;
+    @Column(nullable=false)
     private String genero;
+    @Column(unique=true, nullable=false)
     private String cpf;
+    @Column(unique=true, nullable=false)
     private Long rg;
+    @Column(nullable=false)
     private Long contato;
+    @Column(nullable=false)
     private Date dataNasc;
+    @Column(nullable=false)
     private String pcd;
+    @Column(nullable=false)
     private String nacionalidade;
+    @Column(nullable=false)
     private String naturalidade;
+    @Column(nullable=false)
     private String graduacao;
+    @Column(nullable=false)
     private String escolaridade;
+    @Column(nullable=false)
     private String profissao;
+    @Column(nullable=false)
     private String fotoPerfilUrl;
+    @Column(nullable=false)
     private String certificadoUrl;
+    @Column(nullable=false)
     private String pagamentoUrl;
-    private Usuario usuario;
+
+    @OneToOne(mappedBy = "atleta")
     private Endereco endereco;
 
     public Atleta(){
         super();
     }
 
-    public Atleta(Long idUsuario, String email, Long idAtleta, Long idKuk, Long idFetese, String nome, String genero, String cpf, Long rg, Long contato, Date dataNasc, String pcd, String nacionalidade, String naturalidade, String graduacao, String escolaridade, String profissao, String fotoPerfilUrl, String certificadoUrl, String pagamentoUrl, Usuario usuario, Endereco endereco) {
-        super.setIdUsuario(idUsuario);
-        super.setEmail(email);
+    public Atleta(Long idAtleta, Long idKuk, Long idFetese, String nome, String genero, String cpf, Long rg,
+                  Long contato, Date dataNasc, String pcd, String nacionalidade, String naturalidade,
+                  String graduacao, String escolaridade, String profissao, String fotoPerfilUrl,
+                  String certificadoUrl, String pagamentoUrl, Usuario usuario, Endereco endereco) {
         this.idAtleta = idAtleta;
         this.idKuk = idKuk;
         this.idFetese = idFetese;
@@ -50,7 +79,34 @@ public class Atleta extends Usuario{
         this.fotoPerfilUrl = fotoPerfilUrl;
         this.certificadoUrl = certificadoUrl;
         this.pagamentoUrl = pagamentoUrl;
-        this.usuario = usuario;
+        this.endereco = endereco;
+    }
+
+    public Atleta(Long idUsuario, String email, String senha, Long idAtleta, Long idKuk, Long idFetese,
+                  String nome, String genero, String cpf, Long rg, Long contato, Date dataNasc, String pcd,
+                  String nacionalidade, String naturalidade, String graduacao, String escolaridade,
+                  String profissao, String fotoPerfilUrl, String certificadoUrl, String pagamentoUrl,
+                  Usuario usuario, Endereco endereco) {
+        super(idUsuario, email, senha);
+        this.idAtleta = idAtleta;
+        this.idKuk = idKuk;
+        this.idFetese = idFetese;
+        this.nome = nome;
+        this.genero = genero;
+        this.cpf = cpf;
+        this.rg = rg;
+        this.contato = contato;
+        this.dataNasc = dataNasc;
+        this.pcd = pcd;
+        this.nacionalidade = nacionalidade;
+        this.naturalidade = naturalidade;
+        this.graduacao = graduacao;
+        this.escolaridade = escolaridade;
+        this.profissao = profissao;
+        this.fotoPerfilUrl = fotoPerfilUrl;
+        this.certificadoUrl = certificadoUrl;
+        this.pagamentoUrl = pagamentoUrl;
+
         this.endereco = endereco;
     }
 
@@ -196,14 +252,6 @@ public class Atleta extends Usuario{
 
     public void setPagamentoUrl(String pagamentoUrl) {
         this.pagamentoUrl = pagamentoUrl;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public Endereco getEndereco() {

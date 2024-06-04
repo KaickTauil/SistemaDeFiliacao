@@ -1,20 +1,28 @@
 package br.com.fetese.projetofetese.entidades;
 
+import jakarta.persistence.MappedSuperclass;
+
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class  Usuario {
+@MappedSuperclass
+public abstract class  Usuario implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private Long idUsuario;
     private String email;
     private String senha;
 
-    public void addUser(String email, String senha) {
+
+    public Usuario(){}
+
+
+    public Usuario(Long idUsuario, String email, String senha) {
+        this.idUsuario = idUsuario;
         this.email = email;
         this.senha = senha;
     }
-
-    public void addAtleta(){}
-
-    public Usuario(){}
 
     public Long getIdUsuario() {
         return idUsuario;
