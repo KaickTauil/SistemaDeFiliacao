@@ -1,0 +1,86 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-wrap: wrap; /* Permite que os elementos sejam quebrados em várias linhas */
+}
+
+.form-image {
+    margin-right: 50px;
+    max-width: 40%; /* Limita a largura da imagem */
+}
+
+.form-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilos do formulário */
+.form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+/* ... outros estilos do formulário ... */
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Empilha os elementos verticalmente em telas menores */
+        height: auto;
+        padding: 20px;
+    }
+
+    .form-image {
+        margin-right: 0;
+        margin-bottom: 20px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .form {
+        padding: 20px;
+    }
+
+    .input-box input,
+    .input-box select {
+        padding: 8px;
+    }
+
+    .gender-group {
+        flex-wrap: wrap; /* Permite que os botões de opção de gênero sejam quebrados em várias linhas */
+    }
+
+    .gender-input {
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+}
+
+.input-box input {
+    margin: 0.3 rem 0;
+    padding: 0.5rem 0.8rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #00001c;
+}
