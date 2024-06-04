@@ -21,4 +21,6 @@ public class AtletaServico {
     public List<Atleta> findAll(){
         return atletaRepositorio.findAll();
     }
+
+
 }
