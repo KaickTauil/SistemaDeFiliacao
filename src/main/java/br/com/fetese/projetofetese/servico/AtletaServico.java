@@ -71,6 +71,7 @@ public class AtletaServico {
         return atletaRepositorio.findAll();
     }
 
+<<<<<<< HEAD
     //Metodo para definir um novo nome a partir dos parametros do atleta para o arquivo de imagem
     public String renomearImagem(Atleta atleta, MultipartFile imagem, String tipo) throws IOException {
         // extrair o nome original do arquivo
@@ -88,4 +89,7 @@ public class AtletaServico {
 
         return novoNomeImagem;
     }
+=======
+
+
 }
