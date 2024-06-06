@@ -21,7 +21,7 @@ public class AtletaControlador {
     @GetMapping("/form")
     public String form(Model model) {
         model.addAttribute("atleta", new Atleta());
-        return "cadastroAtleta";
+        return "index";
 
     }
     @PostMapping("/salvarAtleta")

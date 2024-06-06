@@ -9,6 +9,14 @@
 <form th:action="@{/salvarAtleta}" th:object="${atleta}" method="post" enctype="multipart/form-data">
     <div>
         <label>IdKuk:</label>
+        <input type="email" th:field="*{email}">
+    </div>
+    <div>
+        <label>IdKuk:</label>
+        <input type="password" th:field="*{senha}">
+    </div>
+    <div>
+        <label>IdKuk:</label>
         <input type="number" th:field="*{idKuk}">
     </div>
     <div>

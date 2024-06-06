@@ -9,8 +9,8 @@
 <table>
     <thead>
     <tr>
-        <th>Título</th>
-        <th>Preço</th>
+        <th>IdKuk</th>
+        <th>Nome</th>
         <th>Imagem</th>
     </tr>
     </thead>
@@ -19,7 +19,7 @@
         <td th:text="${atleta.idKuk}"></td>
         <td th:text="${atleta.nome}"></td>
         <td>
-            <img th:src="@{'/imagensPerfil/' + ${atleta.fotoPerfilUrl}}" width="100" alt="Imagem do Livro"/>
+            <img th:src="@{'/imagensPerfil/' + ${atleta.fotoPerfilUrl}}" width="100" alt="foto de perfil"/>
         </td>
     </tr>
     </tbody>
