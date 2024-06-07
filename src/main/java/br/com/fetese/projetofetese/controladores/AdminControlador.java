@@ -36,27 +36,16 @@ public class AdminControlador {
         return "admin/listAtletas";
     }
 
-    @GetMapping("/{idFetese}")
-    public String exibirAtletasPorCpf(@PathVariable Long idFetese, Model model) {
-        Atleta atleta = adminServico.encontrarAtletaPorIdFetese(idFetese);
 
-
-        if( idFetese != null && atleta.getIdFetese() == idFetese) {
-            model.addAttribute("atletas", atleta);
-            return "admin/listAtletas";
-        }else {
-            return "/redirect:/ExibirAtletas";
-        }
-    }
-    @DeleteMapping("/{id}")
+    @RequestMapping("/{id}")
     public String excluirAtleta(@PathVariable Long id) {
 
         try {
             adminServico.excluirAtleta(id);
-            return "/exibirAtletas";
+            return "redirect:/exibirAtletas";
         }catch (DataIntegrityViolationException e) {
             e.getMessage();
-            return "/exibirAtletas";
+            return "admin/listAtletas";
         }
 
     }
