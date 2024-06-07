@@ -110,12 +110,12 @@ public class Atleta extends Usuario implements Serializable {
         this.academia = academia;
     }
 
-    public Atleta(Long idUsuario, String email, String senha, Long idAtleta, Long idKuk, Long idFetese,
+    public Atleta( String email, String senha, Long idAtleta, Long idKuk, Long idFetese,
                   String nome, String genero, String cpf, Long rg, Long contato, Date dataNasc, String pcd,
                   String nacionalidade, String naturalidade, String graduacao, String escolaridade,
                   String profissao, String fotoPerfilUrl, String certificadoUrl, String pagamentoUrl,
                   Usuario usuario, String academia) {
-        super(idUsuario, email, senha);
+        super(email, senha);
         this.idAtleta = idAtleta;
         this.idKuk = idKuk;
         this.idFetese = idFetese;

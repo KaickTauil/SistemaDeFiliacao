@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/assets/css/style.css">
+    <link rel="stylesheet" href="../../static/assets/css/style.css">
     <link rel="stylesheet" th:href="@{/assets/css/style.css}">
     <title>Formulário de cadastro</title>
 </head>
 <body>
 <div class="container">
     <div class="form-image">
-        <img src="../static/assets/img/undraw_forms_re_pkrt.svg">
+        <img src="../../static/assets/img/undraw_forms_re_pkrt.svg">
     </div>
     <div class="form">
         <form th:action="@{/salvarAtleta}" th:object="${atleta}" method="post" enctype="multipart/form-data">
@@ -216,6 +216,13 @@
             </div>
         </form>
     </div>
+
+    <h1>Error</h1>
+    <div th:if="${errorDetail != null}">
+        <p>Something went wrong:</p>
+        <p th:text="${errorDetail}"></p>
+    </div>
+
 </div>
 </body>
 </html>

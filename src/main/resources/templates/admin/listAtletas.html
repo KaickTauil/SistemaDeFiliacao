@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,44 +21,36 @@
 </head>
 <body>
   <h1>Lista de Alunos FETESE</h1>
+  <!--<form th:action="@{/{idFetese}}">
+    <label>Encontre um atleta</label>
+    <input class="cpf_input" placeholder="Informe um idFetese: "> <button type="submit">pesquisar</button>
+  </form> -->
   <table>
     <thead>
       <tr>
-        <th>Primero nome</th>
-        <th>Sobrenome</th>
-        <th>Data de nascimento</th>
-        <th>Gênero</th>
-        <th>Academia</th>
-        <th>Endereço</th>
-        <th>Escolaridade</th>
-        <th>PCD</th>
-        <th>Certificado</th>
-        <th>Pagamento</th>
-        <th>ID Fetese</th>
-        <th>ID Kukkiwon</th>
+        <th>Id fetese</th>
+        <th>Id kukiwon</th>
+        <th>Nome</th>
+        <th>Data de Nacimento</th>
         <th>Graduação</th>
+        <th>Academia</th>
+        <th>Nacionalidade</th>
+        <th>Naturalidade</th>
       </tr>
     </thead>
     <tbody>
-       <!-- <tr>
-        <td>João Silva</td>
-        <td>12</td>
-        <td>Verde</td>
-        <td>Academia XYZ</td>
-      </tr>
-      <tr>
-        <td>Maria Oliveira</td>
-        <td>15</td>
-        <td>Azul</td>
-        <td>Dojang ABC</td>
-      </tr>
-      <tr>
-        <td>Pedro Santos</td>
-        <td>18</td>
-        <td>Vermelha</td>
-        <td>Escola de Taekwondo Samurai</td>
-      </tr> -->
-      <!-- adicione mais linhas conforme necessário -->
+       <tr  th:each="atleta : ${atletas}">
+         <td th:text="${atleta.idFetese}"></td>
+         <td th:text="${atleta.idKuk}"></td>
+         <td th:text="${atleta.nome}"></td>
+         <td th:text="${atleta.dataNasc}"></td>
+         <td th:text="${atleta.graduacao}"></td>
+         <td th:text="${atleta.academia}"></td>
+         <td th:text="${atleta.nacionalidade}"></td>
+         <td th:text="${atleta.naturalidade}"></td>
+         <td><a class="btn-floating btn-small waves-effect waves-light red" th:href="${(#mvc.url('AC#excluirAtleta').arg(0, atleta.idAtleta)).build()}" ><i class="material-icons">delete</i></a></td>
+
+       </tr>
     </tbody>
   </table>
 </body>

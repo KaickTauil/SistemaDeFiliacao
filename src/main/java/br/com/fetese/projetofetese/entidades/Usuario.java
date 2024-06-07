@@ -22,7 +22,7 @@ public abstract class  Usuario implements Serializable {
     public Usuario(){}
 
 
-    public Usuario(Long idUsuario, String email, String senha) {
+    public Usuario(String email, String senha) {
         this.email = email;
         this.senha = senha;
 
