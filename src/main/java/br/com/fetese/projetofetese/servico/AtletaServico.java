@@ -22,6 +22,7 @@ public class AtletaServico {
     @Autowired
     private AtletaRepositorio atletaRepositorio;
 
+    //Por favor não se assuste, pretendo otimizar esse codigo em logo logo
     public void salvarAtleta(Atleta atleta, MultipartFile imagemPerfil, MultipartFile imagemCertificado, MultipartFile imagemComprovante) throws IOException {
         if(imagemPerfil.isEmpty() || imagemCertificado.isEmpty() || imagemComprovante.isEmpty()){
             throw new ImageException("Os campos de imagem não podem estar vazios");
@@ -31,9 +32,14 @@ public class AtletaServico {
         atleta.setCertificadoUrl(renomearImagem(atleta, imagemCertificado, "CERTIFICADO"));
         atleta.setPagamentoUrl(renomearImagem(atleta, imagemComprovante, "COMPROVANTE"));
 
-       Path nomeImagemPerfilDir = Paths.get("static/imagensPerfil");
-       Path nomeImagemCertificadoDir = Paths.get("static/imagensCertificado");
-       Path nomeImagemComprovanteDir= Paths.get("static/imagensComprovante");
+
+        String perfilDir = "static/imagens/imagensPerfil/";
+        String certificadoDir = "static/imagens/imagensCertificado/";
+        String comprovanteDir = "static/imagens/imagensComprovante/";
+
+       Path nomeImagemPerfilDir = Paths.get(perfilDir);
+       Path nomeImagemCertificadoDir = Paths.get(certificadoDir);
+       Path nomeImagemComprovanteDir= Paths.get(comprovanteDir);
 
        if(!Files.exists(nomeImagemPerfilDir)){
            Files.createDirectories(nomeImagemPerfilDir);
@@ -85,7 +91,7 @@ public class AtletaServico {
         }
 
         //novo nome do arquivo a partir dos atributors do atleta
-        String novoNomeImagem = tipo + atleta.getNome() + atleta.getCpf() + extensao;
+        String novoNomeImagem = tipo + atleta.getNome().trim() + atleta.getCpf() + extensao;
 
         return novoNomeImagem;
     }
