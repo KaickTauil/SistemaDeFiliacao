@@ -2,17 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Formulário de Livro</title>
+    <title>Cadastro de Atleta</title>
 </head>
 <body>
 <h1>Formulário de Livro</h1>
 <form th:action="@{/salvarAtleta}" th:object="${atleta}" method="post" enctype="multipart/form-data">
     <div>
-        <label>IdKuk:</label>
+        <label>Email:</label>
         <input type="email" th:field="*{email}">
     </div>
     <div>
-        <label>IdKuk:</label>
+        <label>Senha:</label>
         <input type="password" th:field="*{senha}">
     </div>
     <div>
