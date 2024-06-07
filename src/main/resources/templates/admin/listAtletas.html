@@ -21,10 +21,10 @@
 </head>
 <body>
   <h1>Lista de Alunos FETESE</h1>
-  <!--<form th:action="@{/{idFetese}}">
-    <label>Encontre um atleta</label>
-    <input class="cpf_input" placeholder="Informe um idFetese: "> <button type="submit">pesquisar</button>
-  </form> -->
+<form th:action="@{/exibirPorIdFetese}" method="get">
+    <label for="idFetese">Encontre um atleta</label>
+    <input class="cpf_input" placeholder="Informe um idFetese: " type="number" id="idFetese" name="idFetese"> <button type="submit">pesquisar</button>
+  </form>
   <table>
     <thead>
       <tr>
@@ -53,5 +53,9 @@
        </tr>
     </tbody>
   </table>
+
+  <div th:if="${msgErro}">
+    <p th:text="${msgErro}"></p>
+  </div>
 </body>
 </html>

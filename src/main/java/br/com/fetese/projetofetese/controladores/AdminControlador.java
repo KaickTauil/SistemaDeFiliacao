@@ -2,6 +2,7 @@ package br.com.fetese.projetofetese.controladores;
 
 import br.com.fetese.projetofetese.entidades.Admin;
 import br.com.fetese.projetofetese.entidades.Atleta;
+import br.com.fetese.projetofetese.excecoes.ResourceNotFoudException;
 import br.com.fetese.projetofetese.servico.AdminServico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -34,6 +35,22 @@ public class AdminControlador {
         List<Atleta> atletas = adminServico.listarAtletas();
         model.addAttribute("atletas", atletas);
         return "admin/listAtletas";
+    }
+    @GetMapping("/exibirPorIdFetese")
+    public String exibirPorIdFetese(@RequestParam("idFetese") Long idFetese, Model model) {
+        try {
+            Atleta atleta = adminServico.encontrarAtletaPorIdFetese(idFetese);
+            model.addAttribute("atletas", atleta);
+        }catch (ResourceNotFoudException e){
+            model.addAttribute("msgErro", "Atleta não encontrado para o ID: " + idFetese);
+        }catch (Exception e){
+            model.addAttribute("msgErro", "Um erro inesperado aconteceu");
+        }
+
+        return "admin/listAtletas";
+
+
+
     }
 
 
