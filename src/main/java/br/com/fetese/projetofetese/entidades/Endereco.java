@@ -19,7 +19,7 @@ public class Endereco implements Serializable {
     private String cidade;
     private String estado;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "atleta_id_fk")
     private Atleta atletas;
 

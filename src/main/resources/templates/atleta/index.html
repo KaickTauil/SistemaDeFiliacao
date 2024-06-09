@@ -45,11 +45,11 @@
             <div class="input-group">
                 <div class="input-box">
                     <label>Insira seu endereço</label>
-                    <input type="text" placeholder="Logradouro" name="logradouro" required/>
-                    <input type="number" placeholder="Número" name="numero" required/>
-                    <input type="text" placeholder="Bairro" name="bairro" required>
-                    <input type="text" placeholder="Cidade" name="cidade" required>
-                    <input type="text" placeholder="Estado" name="estado" required>
+                    <input type="text" placeholder="Logradouro" name="logradouro" required th:field="*{endereco.logradouro}"/>
+                    <input type="number" placeholder="Número" name="numero" required th:field="*{endereco.numero}"/>
+                    <input type="text" placeholder="Bairro" name="bairro" required th:field="*{endereco.bairro}">
+                    <input type="text" placeholder="Cidade" name="cidade" required th:field="*{endereco.cidade}">
+                    <input type="text" placeholder="Estado" name="estado" required th:field="*{endereco.estado}">
                 </div>
             </div>
 

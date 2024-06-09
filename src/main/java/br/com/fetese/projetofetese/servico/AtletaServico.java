@@ -92,7 +92,7 @@ public class AtletaServico {
         }
 
         //novo nome do arquivo a partir dos atributors do atleta
-        String novoNomeImagem = tipo + atleta.getNome().trim() + atleta.getCpf() + new Date() + extensao;
+        String novoNomeImagem = tipo + atleta.getNome().trim() + atleta.getCpf()  + extensao;
 
         return novoNomeImagem;
     }

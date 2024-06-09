@@ -1,6 +1,7 @@
 package br.com.fetese.projetofetese.controladores;
 
 import br.com.fetese.projetofetese.entidades.Atleta;
+import br.com.fetese.projetofetese.entidades.Endereco;
 import br.com.fetese.projetofetese.servico.AtletaServico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,11 @@ public class AtletaControlador {
 
     @GetMapping("/form")
     public String form(Model model) {
-        model.addAttribute("atleta", new Atleta());
+        Atleta atleta = new Atleta();
+        Endereco endereco = new Endereco();
+        endereco.setAtletas(atleta);
+        atleta.setEndereco(endereco);
+        model.addAttribute("atleta", atleta);
         return "atleta/index";
 
     }
@@ -29,6 +34,7 @@ public class AtletaControlador {
                                 @RequestParam("imagemComprovante") MultipartFile imagemComprovante) {
 
         try{
+            atleta.getEndereco().setAtletas(atleta);
             atletaServico.salvarAtleta(atleta, imagemPerfil, imagemCertificado, imagemComprovante);
             System.out.println("Atleta salvo com sucesso");
             return "/atleta/index";
