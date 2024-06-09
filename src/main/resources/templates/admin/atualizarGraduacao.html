@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"  >
+    <title>Title</title>
+</head>
+<body>
+<div class="titulo">
+    <h1> Cadastro Administrador</h1>
+</div>
+<form th:action="@{/alteta/atualizarGraduacao}" th:object="${atleta}" method="post">
+
+    <input readonly th:field="*{idAtleta}" name="idAtleta" >
+
+    <div class="graduacaoUpdate_input">
+        <label>Digite nova Graduação: </label>
+        <input th:field="*{graduacao}" placeholder="digite o seu email" >
+    </div>
+    <div class="academiaUpdate_input">
+        <label>Escolha sua nova Academia: </label>
+        <input th:field="*{academia}" placeholder="digite o seu email" >
+    </div>
+    <div class="profissaoUpdate_input">
+        <label>Digite nova profissão: </label>
+        <input th:field="*{profissao}" placeholder="digite o seu email" >
+    </div>
+    <div class="pcdUpdate_input">
+        <label>PCD ?: </label>
+        <input th:field="*{pcd}" placeholder="escolha uma opção" >
+    </div>
+
+
+    <button type="submit">salvar</button>
+</form>
+
+
+
+</body>
+</html>

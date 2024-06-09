@@ -49,8 +49,6 @@ public class AdminControlador {
 
         return "admin/listAtletas";
 
-
-
     }
 
 
@@ -66,4 +64,24 @@ public class AdminControlador {
         }
 
     }
+    @GetMapping("/atleta/editarGraduacao/{idAtleta}")
+    public String formAtualizarGraduaao (@PathVariable("idAtleta") Long id, Model model ){
+        try {
+            Atleta atleta = adminServico.encontrarAtletaPorId(id);
+            model.addAttribute("atleta", atleta);
+            return "admin/atualizarGraduacao";
+        } catch (ResourceNotFoudException e) {
+            model.addAttribute("msgErro", e.getMessage());
+            return "admin/listAtletas";
+        }
+    }
+    @PostMapping("/alteta/atualizarGraduacao")
+    public String alterarGraduacao(@RequestParam("idAtleta") Long idAtleta,
+                                   String graduacao, String academia, String profissao, String pcd) {
+
+        adminServico.AtualizarAtleta(idAtleta, graduacao, academia, profissao, pcd);
+        return "admin/listAtletas";
+    }
+
+
 }

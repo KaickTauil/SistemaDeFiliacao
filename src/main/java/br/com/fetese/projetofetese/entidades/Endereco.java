@@ -21,7 +21,7 @@ public class Endereco implements Serializable {
 
     @OneToOne
     @JoinColumn(name = "atleta_id_fk")
-    private Atleta atleta;
+    private Atleta atletas;
 
     public Endereco() {
     }
@@ -83,12 +83,12 @@ public class Endereco implements Serializable {
         this.estado = estado;
     }
 
-    public Atleta getAtleta() {
-        return atleta;
+    public Atleta getAtletas() {
+        return atletas;
     }
 
-    public void setAtleta(Atleta atleta) {
-        this.atleta = atleta;
+    public void setAtletas(Atleta atleta) {
+        this.atletas = atleta;
     }
 
     @Override

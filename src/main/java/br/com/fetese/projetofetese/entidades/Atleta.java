@@ -78,7 +78,7 @@ public class Atleta extends Usuario implements Serializable {
     @Column(nullable=false)
     private String pagamentoUrl;
 
-    @OneToOne(mappedBy = "atleta")
+    @OneToOne(mappedBy = "atletas")
     private Endereco endereco;
 
     public Atleta(){

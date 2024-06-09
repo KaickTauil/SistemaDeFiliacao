@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -91,7 +92,7 @@ public class AtletaServico {
         }
 
         //novo nome do arquivo a partir dos atributors do atleta
-        String novoNomeImagem = tipo + atleta.getNome().trim() + atleta.getCpf() + extensao;
+        String novoNomeImagem = tipo + atleta.getNome().trim() + atleta.getCpf() + new Date() + extensao;
 
         return novoNomeImagem;
     }
