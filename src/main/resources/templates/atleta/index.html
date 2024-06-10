@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/assets/css/style.css">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <title>Formulário de cadastro</title>
+</head>
+<body>
+<div class="container">
+    <div class="form-image">
+        <img src="../../static/assets/img/undraw_forms_re_pkrt.svg">
+    </div>
+    <div class="form">
+        <form th:action="@{/salvarAtleta}" th:object="${atleta}" method="post" enctype="multipart/form-data">
+            <div class="input-group">
+                <div class="input-box">
+                    <label>Nome Completo</label>
+                    <input id="text" type="text" name="firstname" placeholder="Digite seu nome" required th:field="*{nome}">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="number">CPF</label>
+                    <input id="number" type="number" name="cpf" placeholder="Digite seu CPF (Somente números)" required th:field="*{cpf}">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="number">RG</label>
+                    <input type="number" name="rg" placeholder="Digite seu número de RG" required th:field="*{rg}">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" name="email" placeholder="Digite seu email" required th:field="*{email}">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label>Insira seu endereço</label>
+                    <input type="text" placeholder="Logradouro" name="logradouro" required th:field="*{endereco.logradouro}"/>
+                    <input type="number" placeholder="Número" name="numero" required th:field="*{endereco.numero}"/>
+                    <input type="text" placeholder="Bairro" name="bairro" required th:field="*{endereco.bairro}">
+                    <input type="text" placeholder="Cidade" name="cidade" required th:field="*{endereco.cidade}">
+                    <input type="text" placeholder="Estado" name="estado" required th:field="*{endereco.estado}">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="number">Celular</label>
+                    <input type="tel" name="number" placeholder="Digite seu número" required th:field="*{contato}">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="date">Data de nascimento</label>
+                    <input id="date" type="date" name="date" placeholder="Informe sua data de nascimento" required th:field="*{dataNasc}">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label>Você é PCD?</label>
+                    <select name="pcd" th:field="*{pcd}">
+                        <option value="nao">Não</option>
+                        <option value="sim">Sim</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label>Qual sua escolaridade?</label>
+                    <select name="escolaridade" th:field="*{escolaridade}">
+                        <option value="ensino1">Ensino superior completo</option>
+                        <option value="ensino2">Ensino superior incompleto</option>
+                        <option value="ensino3">Ensino médio completo</option>
+                        <option value="ensino4">Ensino médio incompleto</option>
+                        <option value="ensino5">Ensino fundamental completo</option>
+                        <option value="ensino6">Ensino fundamental incompleto</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label>Informe sua academia</label>
+                    <select name="academia" th:field="*{academia}" >
+                        <option value="academia1">Associação de Taekwondo de Aracaju - ATA</option>
+                        <option value="academia2">Ramses Team</option>
+                        <option value="academia3">Garra Team Fight</option>
+                        <option value="academia4">Olimpica Center Fight</option>
+                        <option value="academia5">GTC Taekwondo</option>
+                        <option value="academia6">Associação Fera de Taekwondo</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="image">Foto de perfil</label>
+                    <input id="image" type="file" name="imagemPerfil" placeholder="Anexe sua foto de perfil" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="certificado">Certificado</label>
+                    <input id="certificado" type="file" name="imagemCertificado" placeholder="Anexe seu certificado de atleta" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="pagamento">Pagamento</label>
+                    <input id="pagamento" type="file" name="imagemComprovante" placeholder="Anexe seu pagamento" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="email">Nacionalidade</label>
+                    <input id="nacionalidade" type="text" name="email" placeholder="Digite sua nacionalidade" required th:field="*{nacionalidade}">
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="email">Naturalidade</label>
+                    <input id="naturalidade" type="text" name="email" placeholder="Digite sua naturalidade" required th:field="*{naturalidade}">
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="email">Naturalidade</label>
+                    <input id="profissao" type="text" name="email" placeholder="Digite sua profissão" required th:field="*{profissao}">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label>Informe sua graduação</label>
+                    <select name="faixa" th:field="*{graduacao}">
+                        <option value="branca">Faixa Branca - 10° Gub</option>
+                        <option value="cinza">Faixa Cinza - 9° Gub</option>
+                        <option value="amarela">Faixa Amarela - 8° Gub</option>
+                        <option value="laranja">Faixa Laranja - 7° Gub</option>
+                        <option value="verdeclara">Faixa Verde Clara - 6° Gub</option>
+                        <option value="verdeescura">Faixa Verde Escura - 5° Gub</option>
+                        <option value="azulclara">Faixa Azul Clara - 4° Gub</option>
+                        <option value="azulescura">Faixa Azul Escura - 3° Gub</option>
+                        <option value="vermelhaclara">Faixa Vermelha Clara - 2° Gub</option>
+                        <option value="vermelhaescura">Faixa Vermelha Escura - 1° Gub</option>
+                        <option value="preta1">Faixa Preta - 1° Dan</option>
+                        <option value="preta2">Faixa Preta - 2° Dan</option>
+                        <option value="preta3">Faixa Preta - 3° Dan</option>
+                        <option value="preta4">Faixa Preta - 4° Dan</option>
+                        <option value="preta5">Faixa Preta - 5° Dan</option>
+                        <option value="preta6">Faixa Preta - 6° Dan</option>
+                        <option value="preta7">Faixa Preta - 7° Dan</option>
+                        <option value="preta8">Faixa Preta - 8° Dan</option>
+                        <option value="preta9">Faixa Preta - 9° Dan</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="number">ID Fetese</label>
+                    <input type="number" name="idfetese" placeholder="Digite seu número de registro FETESE" required th:field="*{idFetese}">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="number">ID Kukkiwon</label>
+                    <input type="number" name="idkukkiwon" placeholder="Digite seu número de registro Kukkiwon" required th:field="*{idKuk}">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="gender-inputs">
+                    <div class="gender-title">
+                        <h6>Gênero</h6>
+                    </div>
+                    <div class="gender-group">
+                        <div class="gender-input">
+                            <input type="radio" id="female" name="gender" value="feminino" th:field="*{genero}">
+                            <label for="female">Feminino</label>
+                        </div>
+                        <div class="gender-input">
+                            <input type="radio" id="male" name="gender" value="masculino" th:field="*{genero}">
+                            <label for="male">Masculino</label>
+                        </div>
+                        <div class="gender-input">
+                            <input type="radio" id="others" name="gender" value="outros" th:field="*{genero}">
+                            <label for="others">Outros</label>
+                        </div>
+                        <div class="gender-input">
+                            <input type="radio" id="none" name="gender" value="prefiroNaoDizer" th:field="*{genero}">
+                            <label for="none">Prefiro não dizer</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="continue-button">
+                <button type="submit">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+
+    <h1>Error</h1>
+    <div th:if="${errorDetail != null}">
+        <p>Something went wrong:</p>
+        <p th:text="${errorDetail}"></p>
+    </div>
+
+</div>
+</body>
+</html>

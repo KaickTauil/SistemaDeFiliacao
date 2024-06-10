@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Livros</title>
+</head>
+<body>
+<h1>Lista de Livros</h1>
+<table>
+    <thead>
+    <tr>
+        <th>IdKuk</th>
+        <th>Nome</th>
+        <th>Imagem</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="atleta : ${atletas}">
+        <td th:text="${atleta.idKuk}"></td>
+        <td th:text="${atleta.nome}"></td>
+        <td>
+            <img th:src="@{'/imagensPerfil/' + ${atleta.fotoPerfilUrl}}" width="100" alt="foto de perfil"/>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

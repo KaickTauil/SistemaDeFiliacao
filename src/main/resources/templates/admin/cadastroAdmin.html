@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"  >
+    <title>Title</title>
+</head>
+<body>
+<div class="titulo">
+    <h1> Cadastro Administrador</h1>
+</div>
+ <form th:action="@{/salvarAdmin}" th:object="${admin}" method="post">
+     <div class="email_input">
+         <label>Digite seu email: </label>
+         <input th:field="*{email}" placeholder="digite o seu email" >
+     </div>
+     <div class="senha_input">
+         <label>Digite sua senha: </label>
+         <input th:field="*{senha}" placeholder="digite o seu email" >
+     </div>
+
+     <button type="submit">salvar</button>
+ </form>
+
+
+
+</body>
+</html>

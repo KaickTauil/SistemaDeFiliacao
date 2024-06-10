@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Alunos FETESE</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lista de Alunos FETESE</h1>
+<form th:action="@{/exibirPorIdFetese}" method="get">
+    <label for="idFetese">Encontre um atleta</label>
+    <input class="cpf_input" placeholder="Informe um idFetese: " type="number" id="idFetese" name="idFetese"> <button type="submit">pesquisar</button>
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th>Id fetese</th>
+        <th>Id kukiwon</th>
+        <th>Nome</th>
+        <th>Data de Nacimento</th>
+        <th>Graduação</th>
+        <th>Academia</th>
+        <th>Nacionalidade</th>
+        <th>Naturalidade</th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr  th:each="atleta : ${atletas}">
+         <td th:text="${atleta.idFetese}"></td>
+         <td th:text="${atleta.idKuk}"></td>
+         <td th:text="${atleta.nome}"></td>
+         <td th:text="${atleta.dataNasc}"></td>
+         <td th:text="${atleta.graduacao}"></td>
+         <td th:text="${atleta.academia}"></td>
+         <td th:text="${atleta.nacionalidade}"></td>
+         <td th:text="${atleta.naturalidade}"></td>
+         <td><a class="btn-floating btn-small waves-effect waves-light red" th:href="${(#mvc.url('AC#excluirAtleta').arg(0, atleta.idAtleta)).build()}" ><i class="material-icons">delete</i></a></td>
+         <td> <a th:href="@{'/atleta/editarGraduacao/' + ${atleta.idAtleta}}">Editar</a></td>
+
+       </tr>
+    </tbody>
+  </table>
+
+  <div th:if="${msgErro}">
+    <p th:text="${msgErro}" style="color: red;"></p>
+  </div>
+
+  <div th:if="${atualizado}">
+    <p th:text="${atualizado}" style="color: green;"></p>
+  </div>
+</body>
+</html>

@@ -1,5 +1,8 @@
 package br.com.fetese.projetofetese.entidades;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 import java.io.Serializable;
@@ -10,7 +13,8 @@ public abstract class  Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Long idUsuario;
+
+
     private String email;
     private String senha;
 
@@ -18,19 +22,12 @@ public abstract class  Usuario implements Serializable {
     public Usuario(){}
 
 
-    public Usuario(Long idUsuario, String email, String senha) {
-        this.idUsuario = idUsuario;
+    public Usuario(String email, String senha) {
         this.email = email;
         this.senha = senha;
+
     }
 
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
 
     public String getEmail() {
         return email;
@@ -48,16 +45,5 @@ public abstract class  Usuario implements Serializable {
         this.senha = senha;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Usuario usuario = (Usuario) o;
-        return Objects.equals(idUsuario, usuario.idUsuario);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(idUsuario);
-    }
 }

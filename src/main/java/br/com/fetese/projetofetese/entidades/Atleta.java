@@ -1,6 +1,7 @@
 package br.com.fetese.projetofetese.entidades;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -15,28 +16,55 @@ public class Atleta extends Usuario implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long idAtleta;
 
+    @NotNull(message = "Por favor, informi um id kukiwon")
     @Column(unique=true, nullable=false)
     private Long idKuk;
+
+    @NotNull(message = "Por favor, informe um id fetese")
     @Column(unique=true, nullable=false)
     private Long idFetese;
+
+    @NotNull(message = "O nome não pode estar vazio")
     @Column(nullable=false)
     private String nome;
+
+    @NotNull(message = "escolha um genero")
     @Column(nullable=false)
     private String genero;
+
+    @NotNull(message = "Por favor, insira seu Cpf")
     @Column(unique=true, nullable=false)
     private String cpf;
+
+    @NotNull(message = " Por favor, insira seu RG")
     @Column(unique=true, nullable=false)
     private Long rg;
+
+    @NotNull(message = "Por favor, insira seu contato")
     @Column(nullable=false)
     private Long contato;
+
+    @NotNull(message = "Por favor, insira sua data de Nascimento")
     @Column(nullable=false)
     private Date dataNasc;
+
+    @NotNull(message = "Por favor, informe se você é uma pessoa com deficiencia")
     @Column(nullable=false)
     private String pcd;
+
+    @NotNull(message = "Por favor, insira sua nacionalidade")
     @Column(nullable=false)
     private String nacionalidade;
+
+    @NotNull(message = "Por favor, insira sua naturalidade ")
     @Column(nullable=false)
     private String naturalidade;
+
+
+    @Column(nullable=false)
+    private String academia;
+
+    @NotNull(message = "Por favor, insira sua graduação")
     @Column(nullable=false)
     private String graduacao;
     @Column(nullable=false)
@@ -50,7 +78,7 @@ public class Atleta extends Usuario implements Serializable {
     @Column(nullable=false)
     private String pagamentoUrl;
 
-    @OneToOne(mappedBy = "atleta")
+    @OneToOne(mappedBy = "atletas", cascade = CascadeType.ALL, orphanRemoval = true)
     private Endereco endereco;
 
     public Atleta(){
@@ -60,7 +88,7 @@ public class Atleta extends Usuario implements Serializable {
     public Atleta(Long idAtleta, Long idKuk, Long idFetese, String nome, String genero, String cpf, Long rg,
                   Long contato, Date dataNasc, String pcd, String nacionalidade, String naturalidade,
                   String graduacao, String escolaridade, String profissao, String fotoPerfilUrl,
-                  String certificadoUrl, String pagamentoUrl, Usuario usuario, Endereco endereco) {
+                  String certificadoUrl, String pagamentoUrl, Usuario usuario, Endereco endereco, String academia) {
         this.idAtleta = idAtleta;
         this.idKuk = idKuk;
         this.idFetese = idFetese;
@@ -79,15 +107,15 @@ public class Atleta extends Usuario implements Serializable {
         this.fotoPerfilUrl = fotoPerfilUrl;
         this.certificadoUrl = certificadoUrl;
         this.pagamentoUrl = pagamentoUrl;
-        this.endereco = endereco;
+        this.academia = academia;
     }
 
-    public Atleta(Long idUsuario, String email, String senha, Long idAtleta, Long idKuk, Long idFetese,
+    public Atleta( String email, String senha, Long idAtleta, Long idKuk, Long idFetese,
                   String nome, String genero, String cpf, Long rg, Long contato, Date dataNasc, String pcd,
                   String nacionalidade, String naturalidade, String graduacao, String escolaridade,
                   String profissao, String fotoPerfilUrl, String certificadoUrl, String pagamentoUrl,
-                  Usuario usuario, Endereco endereco) {
-        super(idUsuario, email, senha);
+                  Usuario usuario, String academia) {
+        super(email, senha);
         this.idAtleta = idAtleta;
         this.idKuk = idKuk;
         this.idFetese = idFetese;
@@ -106,8 +134,7 @@ public class Atleta extends Usuario implements Serializable {
         this.fotoPerfilUrl = fotoPerfilUrl;
         this.certificadoUrl = certificadoUrl;
         this.pagamentoUrl = pagamentoUrl;
-
-        this.endereco = endereco;
+        this.academia = academia;
     }
 
     public Long getIdAtleta() {
@@ -252,6 +279,14 @@ public class Atleta extends Usuario implements Serializable {
 
     public void setPagamentoUrl(String pagamentoUrl) {
         this.pagamentoUrl = pagamentoUrl;
+    }
+
+    public String getAcademia() {
+        return academia;
+    }
+
+    public void setAcademia(String academia) {
+        this.academia = academia;
     }
 
     public Endereco getEndereco() {

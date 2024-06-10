@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Atleta</title>
+</head>
+<body>
+<h1>Formulário de Livro</h1>
+<form th:action="@{/salvarAtleta}" th:object="${atleta}" method="post" enctype="multipart/form-data">
+    <div>
+        <label>Email:</label>
+        <input type="email" th:field="*{email}">
+    </div>
+    <div>
+        <label>Senha:</label>
+        <input type="password" th:field="*{senha}">
+    </div>
+    <div>
+        <label>IdKuk:</label>
+        <input type="number" th:field="*{idKuk}">
+    </div>
+    <div>
+        <label>IdFetese:</label>
+        <input type="number" th:field="*{idFetese}">
+    </div>
+    <div>
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}">
+    </div>
+    <div>
+        <label>Genero:</label>
+        <input type="text" th:field="*{genero}">
+    </div>
+    <div>
+        <label>Cpf:</label>
+        <input type="number" th:field="*{cpf}">
+    </div>
+    <div>
+        <label>rg:</label>
+        <input type="number" th:field="*{rg}">
+    </div>
+    <div>
+        <label>contato:</label>
+        <input type="number" th:field="*{contato}">
+    </div>
+    <div>
+        <label>data:</label>
+        <input type="date" th:field="*{dataNasc}">
+    </div>
+    <div>
+        <label>PS4:</label>
+        <input type="text" th:field="*{pcd}">
+    </div>
+    <div>
+        <label>Nacionalidade:</label>
+        <input type="text" th:field="*{nacionalidade}">
+    </div>
+    <div>
+        <label>Naturalidade:</label>
+        <input type="text" th:field="*{naturalidade}">
+    </div>
+    <div>
+        <label>Graduação:</label>
+        <input type="text" th:field="*{graduacao}">
+    </div>
+    <div>
+        <label>Escolariadade:</label>
+        <input type="text" th:field="*{escolaridade}">
+    </div>
+    <div>
+        <label>Profisdsap:</label>
+        <input type="text" th:field="*{profissao}">
+    </div>
+
+
+    <div>
+        <label>Imagem:</label>
+        <input type="file" name="imagemPerfil">
+    </div>
+    <div>
+        <label>Imagem:</label>
+        <input type="file" name="imagemCertificado">
+    </div>
+    <div>
+        <label>Imagem:</label>
+        <input type="file" name="imagemComprovante">
+    </div>
+    <button type="submit">Salvar</button>
+</form>
+</body>
+</html>

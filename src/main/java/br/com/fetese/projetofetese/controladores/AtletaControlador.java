@@ -1,7 +1,7 @@
 package br.com.fetese.projetofetese.controladores;
 
 import br.com.fetese.projetofetese.entidades.Atleta;
-import br.com.fetese.projetofetese.excecoes.SaveException;
+import br.com.fetese.projetofetese.entidades.Endereco;
 import br.com.fetese.projetofetese.servico.AtletaServico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,8 +20,12 @@ public class AtletaControlador {
 
     @GetMapping("/form")
     public String form(Model model) {
-        model.addAttribute("atleta", new Atleta());
-        return "cadastroAtleta";
+        Atleta atleta = new Atleta();
+        Endereco endereco = new Endereco();
+        endereco.setAtletas(atleta);
+        atleta.setEndereco(endereco);
+        model.addAttribute("atleta", atleta);
+        return "atleta/index";
 
     }
     @PostMapping("/salvarAtleta")
@@ -30,18 +34,14 @@ public class AtletaControlador {
                                 @RequestParam("imagemComprovante") MultipartFile imagemComprovante) {
 
         try{
+            atleta.getEndereco().setAtletas(atleta);
             atletaServico.salvarAtleta(atleta, imagemPerfil, imagemCertificado, imagemComprovante);
             System.out.println("Atleta salvo com sucesso");
-            return "/exibirAtletas";
+            return "/atleta/index";
         }catch (IOException e){
-            return  e.getMessage() ;
+            return  "/erro" ;
         }
 
     }
-    @GetMapping("/exibirAtletas")
-    public String exibirAtletas(Model model) {
-        List<Atleta> atletas = atletaServico.findAll();
-        model.addAttribute("atletas", atletas);
-        return "exibirAtletas";
-    }
+
 }

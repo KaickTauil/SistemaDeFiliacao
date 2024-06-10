@@ -24,8 +24,8 @@ public class Admin extends Usuario implements Serializable {
         this.idAdmin = idAdmin;
     }
 
-    public Admin(Long idUsuario, String email, String senha, Long idAdmin) {
-        super(idUsuario, email, senha);
+    public Admin(String email, String senha, Long idAdmin) {
+        super(email, senha);
         this.idAdmin = idAdmin;
     }
 
