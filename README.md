@@ -7,7 +7,10 @@ endpoints:
 /exibirAtletas - visualizar atletas
 obs: na visualização de atletas possuem botoes para excluir e atualizar os mesmos
 
-estamos trabalhando nos endpoints de admin 
+/formAdmin - cadastrar admins
+
+
+Anda estamos trabalhando no contole de acesso
 
 talvez a aplicção não esteja totalmente finalizada no momento em que voce estiver visualizando.
 
